@@ -31,16 +31,6 @@
         .modal-body { max-height: 80vh; }
         #notification { transition: opacity 0.5s, transform 0.5s; }
         
-        .currency-amount::after {
-            content: var(--currency-symbol, ' ج.م');
-            margin-right: 4px;
-            font-size: 0.9em;
-            color: #6b7280;
-        }
-        tr[data-currency-symbol] .currency-amount::after,
-        div[data-currency-symbol] .currency-amount::after {
-             content: attr(data-currency-symbol);
-        }
         .status-badge .dot {
             width: 8px;
             height: 8px;
@@ -144,7 +134,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
                             <div>
                                 <label class="block text-sm text-gray-600">أصل المبلغ المستحق</label>
-                                <input type="text" id="modal-original-amount" readonly class="mt-1 p-2 w-full rounded-md border text-gray-800 font-semibold currency-amount">
+                                <input type="text" id="modal-original-amount" readonly class="mt-1 p-2 w-full rounded-md border text-gray-800 font-semibold">
                             </div>
                             <div>
                                 <label class="block text-sm text-gray-600">أيام التأخير</label>
@@ -152,7 +142,7 @@
                             </div>
                              <div>
                                 <label class="block text-sm text-gray-600">قيمة الغرامة</label>
-                                <input type="text" id="modal-fine-amount" readonly class="mt-1 p-2 w-full rounded-md border text-red-600 font-semibold currency-amount">
+                                <input type="text" id="modal-fine-amount" readonly class="mt-1 p-2 w-full rounded-md border text-red-600 font-semibold">
                             </div>
                             <div class="flex items-center pb-2">
                                 <input id="apply-fine" type="checkbox" checked class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
@@ -172,7 +162,7 @@
                         </div>
                         <div>
                             <label class="block text-sm text-gray-600">إجمالي المبلغ المستحق</label>
-                            <input type="text" id="modal-total-due" readonly class="mt-1 p-2 w-full rounded-md border font-bold text-xl text-blue-800 currency-amount">
+                            <input type="text" id="modal-total-due" readonly class="mt-1 p-2 w-full rounded-md border font-bold text-xl text-blue-800">
                         </div>
                     </div>
                     
@@ -183,7 +173,7 @@
                         </div>
                         <div>
                             <label class="block text-sm text-gray-600">المبلغ المتبقي</label>
-                            <input type="text" id="modal-remaining-amount" readonly class="mt-1 p-2 w-full rounded-md border font-bold text-xl text-red-800 currency-amount">
+                            <input type="text" id="modal-remaining-amount" readonly class="mt-1 p-2 w-full rounded-md border font-bold text-xl text-red-800">
                         </div>
                     </div>
                     
@@ -239,7 +229,7 @@
                 </div>
             </div>
             <div class="flex-1 overflow-y-auto p-6 modal-body space-y-6">
-                <div class="border rounded-lg p-4"><h3 class="font-bold text-lg mb-4 text-blue-600">ملخص السداد</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm"><div class="flex justify-between"><span>اسم المستثمر:</span><span class="font-semibold" id="receipt-investor-name"></span></div><div class="flex justify-between"><span>تاريخ الاستحقاق:</span><span class="font-semibold" id="receipt-due-date"></span></div><div class="flex justify-between"><span>تاريخ التحصيل:</span><span class="font-semibold" id="receipt-payment-date"></span></div><div class="flex justify-between"><span>المبلغ المستحق:</span><span class="font-semibold currency-amount" id="receipt-total-due"></span></div><div class="flex justify-between"><span>المبلغ المحصل بالدفعة:</span><span class="font-semibold text-green-600 currency-amount" id="receipt-collected-amount"></span></div><div class="flex justify-between"><span>المبلغ المتبقي:</span><span class="font-semibold text-red-600 currency-amount" id="receipt-remaining-amount"></span></div></div></div>
+                <div class="border rounded-lg p-4"><h3 class="font-bold text-lg mb-4 text-blue-600">ملخص السداد</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm"><div class="flex justify-between"><span>اسم المستثمر:</span><span class="font-semibold" id="receipt-investor-name"></span></div><div class="flex justify-between"><span>تاريخ الاستحقاق:</span><span class="font-semibold" id="receipt-due-date"></span></div><div class="flex justify-between"><span>تاريخ التحصيل:</span><span class="font-semibold" id="receipt-payment-date"></span></div><div class="flex justify-between"><span>المبلغ المستحق:</span><span class="font-semibold" id="receipt-total-due"></span></div><div class="flex justify-between"><span>المبلغ المحصل بالدفعة:</span><span class="font-semibold text-green-600" id="receipt-collected-amount"></span></div><div class="flex justify-between"><span>المبلغ المتبقي:</span><span class="font-semibold text-red-600" id="receipt-remaining-amount"></span></div></div></div>
                 <div class="border rounded-lg p-4"><h3 class="font-bold text-lg mb-4 text-blue-600">تفاصيل الدفعة</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-sm"><div class="flex justify-between"><span>طريقة الدفع:</span><span class="font-semibold" id="receipt-payment-method"></span></div><div class="flex justify-between"><span>البند:</span><span class="font-semibold">قيمة ايجارية</span></div><div class="flex justify-between"><span>غرامة مطبقة:</span><span class="font-semibold" id="receipt-fine-applied"></span></div><div class="flex justify-between"><span>اسم البنك / الخزينة:</span><span class="font-semibold" id="receipt-bank-name"></span></div><div class="flex justify-between md:col-span-2"><span>تفاصيل / مسؤول الاستلام:</span><span class="font-semibold" id="receipt-bank-details"></span></div><div class="flex justify-between"><span>المستند المرفق:</span><span class="font-semibold">لا يوجد مرفق</span></div></div></div>
                 <div class="border rounded-lg p-4 bg-gray-50"><h3 class="font-bold text-lg mb-2 text-blue-600">الملاحظات</h3><p class="text-sm text-gray-700" id="receipt-notes"></p></div>
             </div>
@@ -255,7 +245,8 @@
             // --- Shared Elements & Functions ---
             const formatNumber = (num) => num.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
             const formatDate = (dateStr) => new Date(dateStr).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
-            
+            const formatCurrency = (num, symbol) => `${formatNumber(num)} ${symbol}`;
+
             const notification = document.getElementById('notification');
             
             function showNotification(message, isSuccess = true) {
@@ -328,6 +319,7 @@
             function populateInvestorDetails(container, data) {
                 const amountDue = parseFloat(data.amount);
                 const amountCollected = parseFloat(data.collected);
+                const currencySymbol = data.currencySymbol;
                 container.innerHTML = `
                     <div class="border rounded-lg p-4 bg-white shadow-sm">
                         <h3 class="font-bold text-lg mb-4 text-blue-600 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>معلومات المستثمر</h3>
@@ -340,20 +332,20 @@
                         <h3 class="font-bold text-lg mb-4 text-blue-600 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM4 10a2 2 0 00-2 2v2a2 2 0 002 2h12a2 2 0 002-2v-2a2 2 0 00-2-2H4z" /></svg>بيانات الأرض</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                             <div class="flex justify-between"><span>المساحة:</span><span class="font-semibold">${data.area} فدان</span></div>
-                            <div class="flex justify-between"><span>القيمة الايجارية للفدان:</span><span class="font-semibold currency-amount">${formatNumber(parseFloat(data.rentPerFaddan))}</span></div>
-                            <div class="flex justify-between"><span>القيمة الايجارية بالعام:</span><span class="font-semibold currency-amount">${formatNumber(amountDue)}</span></div>
-                            <div class="flex justify-between"><span>التأمين:</span><span class="font-semibold currency-amount">${formatNumber(parseFloat(data.insurance))}</span></div>
+                            <div class="flex justify-between"><span>القيمة الايجارية للفدان:</span><span class="font-semibold">${formatCurrency(parseFloat(data.rentPerFaddan), currencySymbol)}</span></div>
+                            <div class="flex justify-between"><span>القيمة الايجارية بالعام:</span><span class="font-semibold">${formatCurrency(amountDue, currencySymbol)}</span></div>
+                            <div class="flex justify-between"><span>التأمين:</span><span class="font-semibold">${formatCurrency(parseFloat(data.insurance), currencySymbol)}</span></div>
                             <div class="flex justify-between"><span>نسبة التأمين:</span><span class="font-semibold">${data.insurancePercent}%</span></div>
-                            <div class="flex justify-between"><span>الباقي من التأمين:</span><span class="font-semibold currency-amount">${formatNumber(parseFloat(data.insuranceRemaining))}</span></div>
+                            <div class="flex justify-between"><span>الباقي من التأمين:</span><span class="font-semibold">${formatCurrency(parseFloat(data.insuranceRemaining), currencySymbol)}</span></div>
                             <div class="flex justify-between md:col-span-2"><span>تاريخ الاستلام:</span><span class="font-semibold">${formatDate(data.receiptDate)}</span></div>
                         </div>
                     </div>
                     <div class="border rounded-lg p-4 bg-gray-50 shadow-sm">
                         <h3 class="font-bold text-lg mb-4 text-blue-600 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1H3a1 1 0 01-1-1V4zM8 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1H9a1 1 0 01-1-1V4zM15 3a1 1 0 00-1 1v12a1 1 0 001 1h2a1 1 0 001-1V4a1 1 0 00-1-1h-2z" /></svg>الملخص المالي</h3>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                            <div><p class="text-gray-500 text-sm">المبلغ المستحق</p><p class="font-bold text-lg currency-amount">${formatNumber(amountDue)}</p></div>
-                            <div><p class="text-gray-500 text-sm">المبلغ المحصل</p><p class="font-bold text-lg text-green-600 currency-amount">${formatNumber(amountCollected)}</p></div>
-                            <div><p class="text-gray-500 text-sm">المبلغ المتأخر</p><p class="font-bold text-lg text-red-600 currency-amount">${formatNumber(amountDue - amountCollected)}</p></div>
+                            <div><p class="text-gray-500 text-sm">المبلغ المستحق</p><p class="font-bold text-lg">${formatCurrency(amountDue, currencySymbol)}</p></div>
+                            <div><p class="text-gray-500 text-sm">المبلغ المحصل</p><p class="font-bold text-lg text-green-600">${formatCurrency(amountCollected, currencySymbol)}</p></div>
+                            <div><p class="text-gray-500 text-sm">المبلغ المتأخر</p><p class="font-bold text-lg text-red-600">${formatCurrency(amountDue - amountCollected, currencySymbol)}</p></div>
                         </div>
                     </div>`;
             }
@@ -368,19 +360,20 @@
 
             function updatePaymentSummary() {
                 if (!currentRow) return;
+                const currencySymbol = currentRow.dataset.currencySymbol;
                 const { lateDays, fine } = calculateFine(paymentDateInput.value, currentRow.dataset.dueDate, currentOriginalAmount);
                 currentFine = fine;
                 modalLateDays.value = `${lateDays} يوم`;
-                modalFineAmount.value = formatNumber(fine);
+                modalFineAmount.value = formatCurrency(fine, currencySymbol);
 
                 const fineToApply = applyFineCheckbox.checked ? currentFine : 0;
                 const totalDue = currentOriginalAmount - parseFloat(currentRow.dataset.collected);
                 const totalDueWithFine = totalDue + fineToApply;
                 
-                modalTotalDue.value = formatNumber(totalDueWithFine);
+                modalTotalDue.value = formatCurrency(totalDueWithFine, currencySymbol);
                 const collectedAmount = parseFloat(amountCollectedInput.value) || 0;
                 const remainingAmount = totalDueWithFine - collectedAmount;
-                modalRemainingAmount.value = formatNumber(remainingAmount);
+                modalRemainingAmount.value = formatCurrency(remainingAmount, currencySymbol);
             }
 
             function openPaymentModal(row) {
@@ -394,7 +387,7 @@
                 modalDueDate.value = dueDate;
                 amountCollectedInput.value = '';
                 paymentDateInput.valueAsDate = new Date();
-                modalOriginalAmount.value = formatNumber(currentOriginalAmount);
+                modalOriginalAmount.value = formatCurrency(currentOriginalAmount, currencySymbol);
                 
                 updatePaymentMethodDetails();
                 updatePaymentSummary(); // Initial calculation
@@ -489,9 +482,9 @@
                 const fineApplied = lastFineApplied === 'true';
                 const totalDue = originalAmount + (fineApplied ? fine : 0);
                 
-                document.getElementById('receipt-total-due').textContent = formatNumber(totalDue);
-                document.getElementById('receipt-collected-amount').textContent = formatNumber(parseFloat(lastCollectedAmount));
-                document.getElementById('receipt-remaining-amount').textContent = formatNumber(totalDue - parseFloat(collected));
+                document.getElementById('receipt-total-due').textContent = formatCurrency(totalDue, currencySymbol);
+                document.getElementById('receipt-collected-amount').textContent = formatCurrency(parseFloat(lastCollectedAmount), currencySymbol);
+                document.getElementById('receipt-remaining-amount').textContent = formatCurrency(totalDue - parseFloat(collected), currencySymbol);
                 document.getElementById('receipt-payment-method').textContent = lastPaymentMethod;
                 document.getElementById('receipt-fine-applied').textContent = fineApplied ? 'نعم' : 'لا';
                 document.getElementById('receipt-bank-name').textContent = lastBankName || 'N/A';
@@ -579,7 +572,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">${d.invoice}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">${d.investor}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${d.dueDate}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 font-semibold currency-amount">${formatNumber(d.amount)}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 font-semibold">${formatCurrency(d.amount, d.currencySymbol)}</td>
                     <td class="px-6 py-4 whitespace-nowrap">${statusBadge}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium action-cell">
                         <div class="flex items-center space-x-4 space-x-reverse">
